@@ -1,9 +1,21 @@
 
 <?php
 
-    fscanf(STDIN , '%d %d\n' , $a , $b);
+$options = getopt("", ["min::","max::"]);
 
-    //var_dump($a , $b);
-    printf( '%d %d\n ', $a , $b)
+$min    = $options["min"]?? 1;
+$max    = $options["max"]?? 100 ;
 
-?>
+$number = rand( $min , $max );
+var_dump($number);
+while(true){
+    $guessess = readline("What is the number ? ");
+    if( $guessess == $number ){
+        print("Yes you are correct ! \n");
+        break;
+    }else if($guessess > $number){
+        print("try small number ! \n");
+    }else{
+        print("try higher number ! \n");
+    }
+}
